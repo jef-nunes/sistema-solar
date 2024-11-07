@@ -119,7 +119,10 @@ button{
     padding: 15px;
     width: fit-content;
     height: fit-content;
-    background-color: rgba(136, 138, 150, 0.176);
+    background-color: rgb(14, 25, 31);
+    border-width: 2px;
+    border-color: rgb(48, 57, 75);
+    border-style: solid;
     border-radius: 5px;
 }
 
@@ -140,16 +143,17 @@ button{
     background-color: rgba(0, 0, 0, 0.174);
     border-radius: 5px;
     border-style: solid;
-    border-width: 1px;
-    border-color: rgb(128, 139, 154);
+    border-width: 5px;
+    border-color: rgb(32, 41, 54);
 }
 
 #planet-right-desc{
+    color: rgb(148, 242, 255);
     padding: 15px;
-    background-color: rgba(136, 138, 150, 0.176);
+    background-color: rgba(0, 174, 255, 0.075);
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(128, 139, 154);
+    border-color: rgb(70, 132, 156);
     width: 350px;
     height: 270px;
     border-radius: 5px;
