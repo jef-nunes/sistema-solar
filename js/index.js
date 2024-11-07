@@ -1,13 +1,14 @@
-const planetaNome = document.getElementById("planet-name");
-const planetaDesc = document.getElementById("planet-desc");
-const planetaImagem = document.getElementById("planet-img");
-const planetaDistSol = document.getElementById("planet-dist-sun");
-const planetaDistTerra = document.getElementById("planet-dist-earth");
-const planetaTemperatura = document.getElementById("planet-temp");
-const planetaTamanho = document.getElementById("planet-size");
-const planetaMassa = document.getElementById("planet-mass");
+const astroNome = document.getElementById("astro-name");
+const astroDesc = document.getElementById("astro-desc");
+const astroImagem = document.getElementById("astro-img");
+const astroDistSol = document.getElementById("astro-dist-sun");
+const astroDistTerra = document.getElementById("astro-dist-earth");
+const astroTemperatura = document.getElementById("astro-temp");
+const astroTamanho = document.getElementById("astro-size");
+const astroMassa = document.getElementById("astro-mass");
 
-const planetas = [
+const astros = [
+    'sol',
     'mercurio', 
     'venus', 
     'terra', 
@@ -18,11 +19,21 @@ const planetas = [
     'netuno'
 ];
 
-const planetasInfo = {
+const astrosInfo = {
+    "sol": {
+        "distSol": "0 km",
+        "distTerra": "1,496*10^8 km",
+        "temp": "5,5*10^3°C (média)",
+        "tamanho": "1,39*10^6 km de diâmetro",
+        "massa": "1,99*10^30 kg",
+        "desc": "O Sol é a estrela central do Sistema Solar. Sua gravidade mantém todos os \
+        planetas do chamado Sistema Solar em órbita, além de outros corpos celestes. \
+        É uma esfera de plasma composta principalmente de hidrogênio e hélio, e sua energia é gerada por fusão nuclear em seu núcleo."
+    },
     "mercurio": {
         "distSol": "5,79*10^7 km",
         "distTerra": "9,17*10^7 km",
-        "temp": "167°C",
+        "temp": "167°C (média)",
         "tamanho": "4.880 km",
         "massa": "3,3*10^23 kg",
         "desc": "Mercúrio é o planeta mais próximo do Sol e possui temperaturas extremas,\
@@ -31,7 +42,7 @@ const planetasInfo = {
     "venus": {
         "distSol": "1,08*10^8 km",
         "distTerra": "4,14*10^7 km",
-        "temp": "464°C",
+        "temp": "464°C (média)",
         "tamanho": "12.104 km",
         "massa": "4,87*10^24 kg",
         "desc": "Vênus é o planeta mais semelhante à Terra em termos de tamanho, mas tem uma\
@@ -40,7 +51,7 @@ const planetasInfo = {
     "terra": {
         "distSol": "1,50*10^8 km",
         "distTerra": "0 km",
-        "temp": "15°C",
+        "temp": "15°C (média)",
         "tamanho": "12.742 km",
         "massa": "5,97*10^24 kg",
         "desc": "A Terra é o único planeta conhecido a abrigar vida, com uma atmosfera rica\
@@ -49,7 +60,7 @@ const planetasInfo = {
     "marte": {
         "distSol": "2,28*10^8 km",
         "distTerra": "5,46*10^7 km",
-        "temp": "-60°C",
+        "temp": "-60°C (média)",
         "tamanho": "6.779 km",
         "massa": "6,42*10^23 kg",
         "desc": "Marte, o planeta vermelho, tem uma atmosfera fina e fria, mas no passado possuía\
@@ -58,7 +69,7 @@ const planetasInfo = {
     "jupiter": {
         "distSol": "7,78*10^8 km",
         "distTerra": "6,29*10^8 km",
-        "temp": "-145°C",
+        "temp": "-145°C (média)",
         "tamanho": "139.820 km",
         "massa": "1,90*10^27 kg",
         "desc": "Júpiter é o maior planeta do Sistema Solar, um gigante gasoso com uma atmosfera\
@@ -67,7 +78,7 @@ const planetasInfo = {
     "saturno": {
         "distSol": "1,43*10^9 km",
         "distTerra": "1,20*10^9 km",
-        "temp": "-178°C",
+        "temp": "-178°C (média)",
         "tamanho": "116.460 km",
         "massa": "5,68*10^26 kg",
         "desc": "Saturno é famoso por seus anéis impressionantes, compostos de gelo e rocha.\
@@ -76,7 +87,7 @@ const planetasInfo = {
     "urano": {
         "distSol": "2,87*10^9 km",
         "distTerra": "2,60*10^9 km",
-        "temp": "-224°C",
+        "temp": "-224°C (média)",
         "tamanho": "50.724 km",
         "massa": "8,68*10^25 kg",
         "desc": "Urano é um gigante gasoso que tem uma rotação única, com seu eixo de rotação\
@@ -85,7 +96,7 @@ const planetasInfo = {
     "netuno": {
         "distSol": "4,50*10^9 km",
         "distTerra": "4,30*10^9 km",
-        "temp": "-218°C",
+        "temp": "-218°C (média)",
         "tamanho": "49.244 km",
         "massa": "1,02*10^26 kg",
         "desc": "Netuno é o planeta mais distante do Sistema Solar. Ele possui uma atmosfera\
@@ -93,29 +104,28 @@ const planetasInfo = {
     }
 };
 
+function selecionaAstro(nomeAstro){
+    let nomeUpper = nomeAstro.charAt(0).toUpperCase() + nomeAstro.slice(1);
+    astroNome.textContent = nomeUpper;
 
-function selecionaPlaneta(nomePlaneta){
-    let nomeUpper = nomePlaneta.charAt(0).toUpperCase() + nomePlaneta.slice(1);
-    planetaNome.textContent = nomeUpper;
+    const info = astrosInfo[nomeAstro];
 
-    const info = planetasInfo[nomePlaneta];
-
-    planetaDesc.textContent = info["desc"];
-    planetaDistSol.textContent = info["distSol"];
-    planetaDistTerra.textContent = info["distTerra"];
-    planetaTemperatura.textContent = info["temp"];
-    planetaTamanho.textContent = info["tamanho"];
-    planetaMassa.textContent = info["massa"];
-    planetaImagem.src = `images/${nomePlaneta}.png`;
+    astroDesc.textContent = info["desc"];
+    astroDistSol.textContent = info["distSol"];
+    astroDistTerra.textContent = info["distTerra"];
+    astroTemperatura.textContent = info["temp"];
+    astroTamanho.textContent = info["tamanho"];
+    astroMassa.textContent = info["massa"];
+    astroImagem.src = `images/${nomeAstro}.png`;
 }
 
-for (let i = 0; i < planetas.length; i++) {
-    let p = planetas[i];
+for (let i = 0; i < astros.length; i++) {
+    let p = astros[i];
     document
     .getElementById(`bt-${p}`)
     .addEventListener("click", () => {
-        selecionaPlaneta(p);
+        selecionaAstro(p);
     });
 }
 
-selecionaPlaneta("terra");
+selecionaAstro("terra");
