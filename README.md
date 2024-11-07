@@ -1,1 +1,1 @@
-![Previa](previa.png)
+![Previa](previa2.png)
