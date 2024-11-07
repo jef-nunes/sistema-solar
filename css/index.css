@@ -23,9 +23,36 @@ button{
 .bt-planet:hover{
     background-color: rgb(25, 25, 25);
 }
+.planet-stat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.planet-stat label{
+    font-size: 18px;
+    font-family: "Chakra Petch";
+    width: fit-content;
+    text-align: center;
+    padding: 15px;
+}
+
+.planet-stat span{
+    font-family: "Chakra Petch";
+    font-size: 18px;
+    background-color: rgb(12, 34, 21);
+    color: rgb(174, 231, 165);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(41, 48, 57);
+    width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 .planet-desc{
-    font-family: sans-serif;
+    font-family: "Chakra Petch";
     font-weight: bold;
 }
 
@@ -41,7 +68,7 @@ button{
 #nav-select-planet{
     position: absolute;
     top: 100px;
-    left: 65px;
+    left: 115px;
 }
 
 #bt-mercurio {
@@ -117,13 +144,23 @@ button{
     border-color: rgb(128, 139, 154);
 }
 
-#planet-texts{
+#planet-right-desc{
     padding: 15px;
     background-color: rgba(136, 138, 150, 0.176);
     border-style: solid;
     border-width: 1px;
     border-color: rgb(128, 139, 154);
-    width: 250px;
+    width: 350px;
     height: 270px;
     border-radius: 5px;
+}
+
+#planet-stats-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 15px;
+    padding-bottom: 15px;
 }
